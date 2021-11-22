@@ -24,7 +24,10 @@ public class Group implements Printable {
         System.out.println("Group " + name + " has been started.");
     }
 
-    public void finish() {
-        System.out.println("Group " + name + " has been finished.");
+//    public String finish(String sss) { //here shouldn't be parameters
+    public String finish() {
+        String str = "Group " + name + " has been finished.";
+        System.out.println(str);
+        return str;
     }
 }
