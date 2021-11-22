@@ -14,4 +14,9 @@ public class Group implements Printable {
     private String name;
     private Teacher teacher;
     private List<Student> students;
+
+    public Group(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
