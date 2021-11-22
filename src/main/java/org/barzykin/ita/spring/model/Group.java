@@ -19,4 +19,12 @@ public class Group implements Printable {
         this.id = id;
         this.name = name;
     }
+
+    public void start() {
+        System.out.println("Group " + name + " has been started.");
+    }
+
+    public void finish() {
+        System.out.println("Group " + name + " has been finished.");
+    }
 }
