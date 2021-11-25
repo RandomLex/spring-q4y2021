@@ -18,5 +18,8 @@ public class StartWithXml {
         }
         ee.print();
 
+        Group testGroup = ctx.getBean("testGroup", Group.class);
+        testGroup.print();
+
     }
 }

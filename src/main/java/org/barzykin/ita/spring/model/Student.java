@@ -20,4 +20,8 @@ public class Student extends Person {
         super(id, name);
         this.marks = marks;
     }
+
+    public Student(int id, String name) {
+        super(id, name);
+    }
 }

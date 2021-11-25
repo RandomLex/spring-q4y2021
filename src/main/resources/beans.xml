@@ -7,7 +7,8 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
-        default-init-method="init" default-destroy-method="destroy">
+>
+<!--default-init-method="init" default-destroy-method="destroy"-->
 
     <util:map id="johnMarks">
         <entry key="Java" value="8"/>
@@ -50,6 +51,20 @@
         <constructor-arg name="name" value="EE"/>
         <property name="teacher" ref="alex"/>
         <property name="students" ref="studentsEe"/>
+    </bean>
+
+    <bean id="testGroup" class="org.barzykin.ita.spring.model.Group">
+        <property name="id" value="#{ee.id + 1}"/>
+        <property name="name" value="#{'test-group-' + new java.util.Random().nextInt(100)}"/>
+        <property name="teacher">
+            <bean class="org.barzykin.ita.spring.model.Teacher" c:id="#{T(Math).round(T(Math).PI)}"
+                  c:name="testTeacher" p:salary="80"/>
+        </property>
+        <property name="students">
+            <util:list>
+                <bean class="org.barzykin.ita.spring.model.Student" c:id="55" c:name="tesStudent"/>
+            </util:list>
+        </property>
     </bean>
 
 </beans>

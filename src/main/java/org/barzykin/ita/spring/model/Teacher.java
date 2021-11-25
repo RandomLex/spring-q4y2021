@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
@@ -18,5 +19,9 @@ public class Teacher extends Person {
     public Teacher(int id, String name, int salary) {
         super(id, name);
         this.salary = salary;
+    }
+
+    public Teacher(int id, String name) {
+        super(id, name);
     }
 }
