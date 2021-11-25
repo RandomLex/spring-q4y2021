@@ -3,6 +3,7 @@ package org.barzykin.ita.spring.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.barzykin.ita.spring.qualifiers.CustomClassQualifier;
 import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.barzykin.ita.spring.qualifiers.MentorQualifier;
 import org.barzykin.ita.spring.qualifiers.TeacherQualifier;
@@ -17,7 +18,7 @@ public class Group implements Printable {
     private int id;
     private String name;
     @Autowired
-    @CustomStringQualifier(name = "mentor")
+    @CustomClassQualifier(clazz = Mentor.class)
     private Teacher teacher;
     private List<Student> students;
 

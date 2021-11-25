@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.barzykin.ita.spring.qualifiers.CustomClassQualifier;
+import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.barzykin.ita.spring.qualifiers.TeacherQualifier;
 
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.List;
 @ToString(callSuper = true)
 @Data
 @NoArgsConstructor
-@TeacherQualifier
+@CustomClassQualifier(clazz = Teacher.class)
 public class Teacher extends Person {
     private int salary;
     private List<String> certificates;
