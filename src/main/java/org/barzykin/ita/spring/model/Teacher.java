@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Teacher extends Person {
     private int salary;
+    private List<String> certificates;
 
     public Teacher(int id, String name, int salary) {
         super(id, name);

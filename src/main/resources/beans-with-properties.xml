@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+>
+<!--default-init-method="init" default-destroy-method="destroy"-->
+
+    <context:property-placeholder location="teachers.properties, students.properties"/>
+
+    <util:map id="johnMarks">
+        <entry key="Java" value="8"/>
+        <entry key="Python" value="9"/>
+        <entry key="C" value="10"/>
+    </util:map>
+
+    <util:map id="bobMarks">
+        <entry key="Java" value="7"/>
+        <entry key="Python" value="8"/>
+        <entry key="C" value="9"/>
+    </util:map>
+
+    <bean id="john" class="org.barzykin.ita.spring.model.Student" c:_0="${john.id}" c:name="${john.name}">
+<!--        <constructor-arg index="0" value="1"/>-->
+<!--        <constructor-arg name="name" value="John"/>-->
+        <constructor-arg name="marks" value="#{${john.marks}}"/>
+    </bean>
+
+    <bean id="bob" class="org.barzykin.ita.spring.model.Student" p:id="${bob.id}">
+<!--        <property name="id" value="2"/>-->
+        <property name="name" value="${bob.name}"/>
+        <property name="marks" value="#{${bob.marks}}"/>
+    </bean>
+
+    <bean id="alex" class="org.barzykin.ita.spring.model.Teacher">
+        <property name="id" value="${alex.id}"/>
+        <property name="name" value="${alex.name}"/>
+        <property name="salary" value="100"/>
+        <property name="certificates" value="${alex.certificates}"/>
+    </bean>
+
+    <util:list id="studentsEe">
+        <ref bean="john"/>
+        <ref bean="bob"/>
+    </util:list>
+
+    <bean id="ee" class="org.barzykin.ita.spring.model.Group" init-method="start" destroy-method="finish">
+<!--    <bean id="ee" class="org.barzykin.ita.spring.model.Group">-->
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="name" value="EE"/>
+        <property name="teacher" ref="alex"/>
+        <property name="students" ref="studentsEe"/>
+    </bean>
+
+    <bean id="testGroup" class="org.barzykin.ita.spring.model.Group">
+        <property name="id" value="#{ee.id + 1}"/>
+        <property name="name" value="#{'test-group-' + new java.util.Random().nextInt(100)}"/>
+        <property name="teacher">
+            <bean class="org.barzykin.ita.spring.model.Teacher" c:id="#{T(Math).round(T(Math).PI)}"
+                  c:name="testTeacher" p:salary="80"/>
+        </property>
+        <property name="students">
+            <util:list>
+                <bean class="org.barzykin.ita.spring.model.Student" c:id="55" c:name="tesStudent"/>
+            </util:list>
+        </property>
+    </bean>
+
+</beans>
