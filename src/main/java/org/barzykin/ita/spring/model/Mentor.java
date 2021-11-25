@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.barzykin.ita.spring.qualifiers.MentorQualifier;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @ToString(callSuper = true)
 @Data
 @NoArgsConstructor
+@MentorQualifier
 public class Mentor extends Teacher {
     private int salary;
     private List<String> certificates;

@@ -3,10 +3,9 @@ package org.barzykin.ita.spring.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.barzykin.ita.spring.qualifiers.AlexQualifier;
-import org.barzykin.ita.spring.qualifiers.AntonQualifier;
+import org.barzykin.ita.spring.qualifiers.MentorQualifier;
+import org.barzykin.ita.spring.qualifiers.TeacherQualifier;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Group implements Printable {
     private int id;
     private String name;
     @Autowired
-    @AntonQualifier
+    @MentorQualifier
     private Teacher teacher;
     private List<Student> students;
 
