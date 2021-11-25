@@ -9,6 +9,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="byType"
 >
 <!--default-init-method="init" default-destroy-method="destroy"-->
 
@@ -38,12 +39,12 @@
         <property name="marks" value="#{${bob.marks}}"/>
     </bean>
 
-    <bean id="alex" class="org.barzykin.ita.spring.model.Teacher">
-        <property name="id" value="${alex.id}"/>
-        <property name="name" value="${alex.name}"/>
-        <property name="salary" value="100"/>
-        <property name="certificates" value="${alex.certificates}"/>
-    </bean>
+<!--    <bean id="alex" class="org.barzykin.ita.spring.model.Teacher">-->
+<!--        <property name="id" value="${alex.id}"/>-->
+<!--        <property name="name" value="${alex.name}"/>-->
+<!--        <property name="salary" value="100"/>-->
+<!--        <property name="certificates" value="${alex.certificates}"/>-->
+<!--    </bean>-->
 
     <bean id="anton" class="org.barzykin.ita.spring.model.Teacher">
         <property name="id" value="${anton.id}"/>
@@ -57,7 +58,7 @@
         <ref bean="bob"/>
     </util:list>
 
-    <bean id="ee" class="org.barzykin.ita.spring.model.Group" autowire="byName" init-method="start" destroy-method="finish">
+    <bean id="ee" class="org.barzykin.ita.spring.model.Group" init-method="start" destroy-method="finish">
 <!--    <bean id="ee" class="org.barzykin.ita.spring.model.Group">-->
         <constructor-arg name="id" value="1"/>
         <constructor-arg name="name" value="EE"/>

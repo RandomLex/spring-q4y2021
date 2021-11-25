@@ -12,7 +12,7 @@ import java.util.List;
 public class Group implements Printable {
     private int id;
     private String name;
-    private Teacher anton;
+    private Teacher teacher;
     private List<Student> students;
 
     public Group(int id, String name) {
