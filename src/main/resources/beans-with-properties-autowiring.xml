@@ -13,6 +13,7 @@
 >
 <!--default-init-method="init" default-destroy-method="destroy"-->
 
+    <context:annotation-config/>
     <context:property-placeholder location="teachers.properties, students.properties"/>
 
     <util:map id="johnMarks">
@@ -39,14 +40,16 @@
         <property name="marks" value="#{${bob.marks}}"/>
     </bean>
 
-    <bean id="alex" class="org.barzykin.ita.spring.model.Teacher" autowire-candidate="false">
+    <bean id="alex" class="org.barzykin.ita.spring.model.Mentor">
+        <qualifier value="alex-qualifier"/>
         <property name="id" value="${alex.id}"/>
         <property name="name" value="${alex.name}"/>
         <property name="salary" value="100"/>
         <property name="certificates" value="${alex.certificates}"/>
     </bean>
 
-    <bean id="anton" class="org.barzykin.ita.spring.model.Teacher" autowire-candidate="true">
+    <bean id="anton" class="org.barzykin.ita.spring.model.Teacher">
+        <qualifier value="anton-qualifier"/>
         <property name="id" value="${anton.id}"/>
         <property name="name" value="${anton.name}"/>
         <property name="salary" value="100"/>
@@ -58,7 +61,7 @@
         <ref bean="bob"/>
     </util:list>
 
-    <bean id="ee" class="org.barzykin.ita.spring.model.Group" init-method="start" destroy-method="finish">
+    <bean id="ee" class="org.barzykin.ita.spring.model.Group" autowire="byName" init-method="start" destroy-method="finish">
 <!--    <bean id="ee" class="org.barzykin.ita.spring.model.Group">-->
         <constructor-arg name="id" value="1"/>
         <constructor-arg name="name" value="EE"/>
