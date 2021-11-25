@@ -3,32 +3,34 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
         default-init-method="init" default-destroy-method="destroy">
+
+    <util:map id="johnMarks">
+        <entry key="Java" value="8"/>
+        <entry key="Python" value="9"/>
+        <entry key="C" value="10"/>
+    </util:map>
+
+    <util:map id="bobMarks">
+        <entry key="Java" value="7"/>
+        <entry key="Python" value="8"/>
+        <entry key="C" value="9"/>
+    </util:map>
 
     <bean id="john" class="org.barzykin.ita.spring.model.Student" c:_0="1" c:name="John">
 <!--        <constructor-arg index="0" value="1"/>-->
 <!--        <constructor-arg name="name" value="John"/>-->
-        <constructor-arg name="marks">
-            <list>
-                <value>8</value>
-                <value>9</value>
-                <value>10</value>
-            </list>
-        </constructor-arg>
+        <constructor-arg name="marks" ref="johnMarks"/>
     </bean>
 
     <bean id="bob" class="org.barzykin.ita.spring.model.Student" p:id="2">
 <!--        <property name="id" value="2"/>-->
         <property name="name" value="Bob"/>
-        <property name="marks">
-            <list>
-                <value>7</value>
-                <value>8</value>
-                <value>9</value>
-            </list>
-        </property>
+        <property name="marks" ref="bobMarks"/>
     </bean>
 
     <bean id="alex" class="org.barzykin.ita.spring.model.Teacher">
@@ -37,17 +39,17 @@
         <property name="salary" value="100"/>
     </bean>
 
+    <util:list id="studentsEe">
+        <ref bean="john"/>
+        <ref bean="bob"/>
+    </util:list>
+
     <bean id="ee" class="org.barzykin.ita.spring.model.Group" init-method="start" destroy-method="finish">
 <!--    <bean id="ee" class="org.barzykin.ita.spring.model.Group">-->
         <constructor-arg name="id" value="1"/>
         <constructor-arg name="name" value="EE"/>
         <property name="teacher" ref="alex"/>
-        <property name="students">
-            <list>
-                <ref bean="john"/>
-                <ref bean="bob"/>
-            </list>
-        </property>
+        <property name="students" ref="studentsEe"/>
     </bean>
 
 </beans>
