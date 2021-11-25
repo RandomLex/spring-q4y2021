@@ -39,14 +39,14 @@
         <property name="marks" value="#{${bob.marks}}"/>
     </bean>
 
-    <bean id="alex" class="org.barzykin.ita.spring.model.Teacher">
+    <bean id="alex" class="org.barzykin.ita.spring.model.Teacher" autowire-candidate="false">
         <property name="id" value="${alex.id}"/>
         <property name="name" value="${alex.name}"/>
         <property name="salary" value="100"/>
         <property name="certificates" value="${alex.certificates}"/>
     </bean>
 
-    <bean id="anton" class="org.barzykin.ita.spring.model.Teacher" primary="true">
+    <bean id="anton" class="org.barzykin.ita.spring.model.Teacher" autowire-candidate="true">
         <property name="id" value="${anton.id}"/>
         <property name="name" value="${anton.name}"/>
         <property name="salary" value="100"/>
