@@ -1,5 +1,6 @@
-package org.barzykin.ita.spring.model;
+package org.barzykin.ita.spring;
 
+import org.barzykin.ita.spring.model.Group;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

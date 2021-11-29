@@ -17,8 +17,8 @@ import java.util.List;
 public class Group implements Printable {
     private int id;
     private String name;
-    @Autowired
-    @CustomClassQualifier(clazz = Mentor.class)
+//    @Autowired
+//    @CustomClassQualifier(clazz = Mentor.class)
     private Teacher teacher;
     private List<Student> students;
 
