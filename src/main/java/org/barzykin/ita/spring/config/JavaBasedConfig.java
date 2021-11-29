@@ -6,10 +6,12 @@ import org.barzykin.ita.spring.model.Student;
 import org.barzykin.ita.spring.model.Teacher;
 import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import java.util.List;
 
+@Configuration
 @Import({StudentConfig.class, TeacherConfig.class})
 public class JavaBasedConfig {
 
