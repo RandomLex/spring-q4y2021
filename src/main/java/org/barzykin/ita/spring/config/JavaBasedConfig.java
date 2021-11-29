@@ -4,13 +4,22 @@ package org.barzykin.ita.spring.config;
 import org.barzykin.ita.spring.model.Group;
 import org.barzykin.ita.spring.model.Student;
 import org.barzykin.ita.spring.model.Teacher;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@PropertySource({"classpath:students.properties", "classpath:teachers.properties"})
 public class JavaBasedConfig {
+    @Value("${john.id}")
+    private int johnId;
+    @Value("${john.name}")
+    private String johnName;
+    @Value("#{${john.marks}}")
+    private Map<String, Integer> johnMarks;
 
 
     @Bean
@@ -31,22 +40,24 @@ public class JavaBasedConfig {
 
     @Bean
     public Student john() {
-        Student john = new Student(1, "John");
-        john.setMarks(Map.of("Java", 8, "Python", 9, "C", 10));
+        Student john = new Student(johnId, johnName);
+        john.setMarks(johnMarks);
         return john;
     }
 
     @Bean("bbb")
-    public Student bob() {
-        Student bob = new Student(2, "Bob");
+    public Student bob(@Value("${bob.id}") int id) {
+        Student bob = new Student(id, "Bob");
         bob.setMarks(Map.of("Java", 7, "Python", 8, "C", 9));
         return bob;
     }
 
     @Bean
-    public Teacher alex() {
-        Teacher alex = new Teacher(1, "Alex", 100);
-        alex.setCertificates(List.of("Java", "Spring", "AWS"));
+    public Teacher alex(@Value("${alex.id}") int id,
+                        @Value("${alex.name}") String name,
+                        @Value("${alex.certificates}") List<String> certificates ) {
+        Teacher alex = new Teacher(id, name, 100);
+        alex.setCertificates(certificates);
         return alex;
     }
 
