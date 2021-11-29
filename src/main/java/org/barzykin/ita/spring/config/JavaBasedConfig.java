@@ -23,9 +23,9 @@ public class JavaBasedConfig {
 
 
     @Bean
-    public Group ee(Teacher anton, List<Student> eeStudents) {
+    public Group ee(Teacher alex, List<Student> eeStudents) {
         Group ee = new Group(1, "EE", null);
-        ee.setTeacher(anton);
+        ee.setTeacher(alex);
         ee.setStudents(eeStudents);
         return ee;
     }
