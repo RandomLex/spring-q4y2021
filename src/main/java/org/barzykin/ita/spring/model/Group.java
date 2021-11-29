@@ -2,7 +2,9 @@ package org.barzykin.ita.spring.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.barzykin.ita.spring.qualifiers.CustomClassQualifier;
 import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.barzykin.ita.spring.qualifiers.MentorQualifier;
@@ -39,8 +41,12 @@ public class Group implements Printable {
     private Teacher teacher;
 
     @Autowired
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Map<String, Teacher> teacherMap;
     @Value("${group.ee.teacher}")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private String teacherName;
 
 
