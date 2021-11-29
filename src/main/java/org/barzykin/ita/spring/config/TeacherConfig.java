@@ -20,6 +20,7 @@ public class TeacherConfig {
 
     @CustomStringQualifier(name = "cde")
 //    @CustomClassQualifier(clazz = Mentor.class)
+//    @Bean("qqq")
     @Bean
     public Teacher alex(@Value("${alex.id}") int id,
                         @Value("${alex.name}") String name,
