@@ -13,7 +13,7 @@ public class StartOldIoc {
         Student bob = new Student(1, "Bob", Map.of("Java", 7, "Python", 8, "C", 9));
         Teacher alex = new Teacher(1, "Alex", 100);
 
-        Group ee = new Group(1, "EE", null, List.of(john, bob));
+        Group ee = new Group(1, "EE", null, null, null, List.of(john, bob));
 
         ee.print();
     }

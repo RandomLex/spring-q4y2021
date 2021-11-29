@@ -14,7 +14,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -26,13 +29,21 @@ public class Group implements Printable {
     private int id;
     @Value("${group.ee.name}")
     private String name;
-    @Autowired
+//    @Autowired
 //    @CustomClassQualifier(clazz = Teacher.class)
-    @MentorQualifier
+//    @MentorQualifier
 //    @CustomStringQualifier(name = "cde")
 //    @Value("#{qqq}")
-    @Value("#{alex}")
-    private Teacher anton;
+//    @Value("#{alex}")
+
+    private Teacher teacher;
+
+    @Autowired
+    private Map<String, Teacher> teacherMap;
+    @Value("${group.ee.teacher}")
+    private String teacherName;
+
+
     private List<Student> students;
 
     public Group(int id, String name) {
@@ -46,11 +57,14 @@ public class Group implements Printable {
         this.students = students;
     }
 
+    @PostConstruct
     public void start() {
+        teacher = teacherMap.get(teacherName);
         System.out.println("Group " + name + " has been started.");
     }
 
 //    public String finish(String sss) { //here shouldn't be parameters
+    @PreDestroy
     public String finish() {
         String str = "Group " + name + " has been finished.";
         System.out.println(str);
