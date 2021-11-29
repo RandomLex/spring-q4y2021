@@ -9,6 +9,7 @@ import lombok.ToString;
 import org.barzykin.ita.spring.qualifiers.CustomClassQualifier;
 import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.barzykin.ita.spring.qualifiers.TeacherQualifier;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @CustomClassQualifier(clazz = Teacher.class)
+@Component
 public class Teacher extends Person {
     private int salary;
     private List<String> certificates;

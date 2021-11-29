@@ -8,17 +8,26 @@ import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.barzykin.ita.spring.qualifiers.MentorQualifier;
 import org.barzykin.ita.spring.qualifiers.TeacherQualifier;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Component("ee")
+@PropertySource("classpath:group.properties")
 public class Group implements Printable {
+    @Value("${group.ee.id}")
     private int id;
+    @Value("${group.ee.name}")
     private String name;
-//    @Autowired
-//    @CustomClassQualifier(clazz = Mentor.class)
+    @Autowired
+    @CustomClassQualifier(clazz = Teacher.class)
     private Teacher teacher;
     private List<Student> students;
 

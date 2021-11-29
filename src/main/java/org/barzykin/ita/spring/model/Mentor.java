@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.barzykin.ita.spring.qualifiers.CustomClassQualifier;
 import org.barzykin.ita.spring.qualifiers.CustomStringQualifier;
 import org.barzykin.ita.spring.qualifiers.MentorQualifier;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @ToString(callSuper = true)
 @Data
 @NoArgsConstructor
+@Component
 @CustomClassQualifier(clazz = Mentor.class)
 public class Mentor extends Teacher {
     private int salary;
