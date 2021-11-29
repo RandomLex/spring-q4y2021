@@ -27,8 +27,10 @@ public class Group implements Printable {
     @Value("${group.ee.name}")
     private String name;
     @Autowired
-    @CustomClassQualifier(clazz = Teacher.class)
-    private Teacher teacher;
+//    @CustomClassQualifier(clazz = Teacher.class)
+//    @MentorQualifier
+    @CustomStringQualifier(name = "cde")
+    private Teacher anton;
     private List<Student> students;
 
     public Group(int id, String name) {

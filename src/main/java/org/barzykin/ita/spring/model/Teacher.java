@@ -18,7 +18,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @CustomClassQualifier(clazz = Teacher.class)
-@Component
+@TeacherQualifier
+@Component("teacher")
 public class Teacher extends Person {
     private int salary;
     private List<String> certificates;

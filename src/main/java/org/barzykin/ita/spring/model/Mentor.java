@@ -16,6 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Component
+@MentorQualifier
 @CustomClassQualifier(clazz = Mentor.class)
 public class Mentor extends Teacher {
     private int salary;
